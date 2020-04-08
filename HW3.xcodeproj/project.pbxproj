@@ -26,7 +26,7 @@
 			containerPortal = EA3B27921B6FBCB300CA035D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EA3B27991B6FBCB300CA035D;
-			remoteInfo = "Minesweeper";
+			remoteInfo = "Bomb Broom";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -68,7 +68,7 @@
 		EA3B27911B6FBCB300CA035D = {
 			isa = PBXGroup;
 			children = (
-				EA3B279C1B6FBCB300CA035D /* Minesweeper */,
+				EA3B279C1B6FBCB300CA035D /* Bomb Broom */,
 				EA3B279B1B6FBCB300CA035D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA3B279C1B6FBCB300CA035D /* Minesweeper */ = {
+		EA3B279C1B6FBCB300CA035D /* Bomb Broom */ = {
 			isa = PBXGroup;
 			children = (
 				EA3B27BF1B6FBCBD00CA035D /* Game */,
@@ -93,7 +93,7 @@
 				EA3B27A81B6FBCB300CA035D /* LaunchScreen.xib */,
 				EA3B279D1B6FBCB300CA035D /* Supporting Files */,
 			);
-			path = "Minesweeper";
+			path = "Bomb Broom";
 			sourceTree = "<group>";
 		};
 		EA3B279D1B6FBCB300CA035D /* Supporting Files */ = {
@@ -133,7 +133,7 @@
 			dependencies = (
 			);
 			name = HW3;
-			productName = "Minesweeper";
+			productName = "Bomb Broom";
 			productReference = EA3B279A1B6FBCB300CA035D /* HW3.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -151,7 +151,7 @@
 				EA3B27B11B6FBCB300CA035D /* PBXTargetDependency */,
 			);
 			name = HW3Tests;
-			productName = "MinesweeperTests";
+			productName = "Bomb BroomTests";
 			productReference = EA3B27AF1B6FBCB300CA035D /* HW3Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -392,7 +392,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Minesweeper/Info.plist";
+				INFOPLIST_FILE = "Bomb Broom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -421,7 +421,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.goold.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW3.app/HW3";
 			};
 			name = Debug;
@@ -431,7 +431,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "MinesweeperTests/Info.plist";
+				INFOPLIST_FILE = "Bomb BroomTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,7 +439,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "net.goold.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HW3.app/HW3";
 			};
 			name = Release;
@@ -478,4 +478,3 @@
 	};
 	rootObject = EA3B27921B6FBCB300CA035D /* Project object */;
 }
-
