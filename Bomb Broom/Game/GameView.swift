@@ -5,6 +5,7 @@
 //  Created by Enrico Vompa on 2020-04-07.
 //  Copyright (c) Enrico Vompa. All rights reserved.
 //
+
 import UIKit
 
 class GameView: UIScrollView, GameViewDelegate, GameObserver {
@@ -17,6 +18,7 @@ class GameView: UIScrollView, GameViewDelegate, GameObserver {
 
     var game: Game? {
         didSet {
+            
             let tileSize = GameTileView.tileSize
             if let game = game {
                 contentSize = CGSize(width: tileSize * CGFloat(game.width),
@@ -62,7 +64,7 @@ class GameView: UIScrollView, GameViewDelegate, GameObserver {
         if tileViews.count > 0 {
             return
         }
-
+        
         let tile = GameTileView(location: Location(x: 0, y: 0), rows: game.height, columns: game.width)
         tile.delegate = self
         tile.tileSet = tileSet

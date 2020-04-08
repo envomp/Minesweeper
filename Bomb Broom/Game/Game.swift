@@ -207,14 +207,6 @@ class Game {
         }
     }
 
-    /**
-     Returns the locations that border a given location, including diagonals.
-
-     - parameter location: A location.
-     - parameter radius:   Distance that determines neighbourhood.
-
-     - returns: All neighbours within the given distance.
-     */
     private func neighbourhood(location: Location, radius: UInt = 1) -> Array<Location> {
         let r = Dimension(radius)
         let left = location.x >= r ? location.x - r : 0
@@ -235,13 +227,6 @@ class Game {
         return neighbourhood
     }
 
-    /**
-     Returns the number of bombs in a location's immediate neighbourhood.
-
-     - parameter location: A location.
-
-     - returns: The number of bombs (from 0 to 8 inclusive).
-     */
     func bombsNear(_ location: Location) -> UInt {
         guard tiles.count > 0 else {
             return 0
@@ -252,13 +237,6 @@ class Game {
         }.count)
     }
 
-    /**
-     Converts a location to an index in the tile array.
-
-     - parameter location: A location.
-
-     - returns: The corresponding array index.
-     */
     private func toIndex(location: Location) -> Int {
         precondition(tiles.count > 0)
         return Int(location.x + width * location.y)
@@ -270,28 +248,12 @@ class Game {
         }
     }
 
-    /**
-     Places bombs on random tiles. A safe location can be specified, in which
-     case that location is guaranteed not to have a bomb.
-
-     - parameter excluding: An optional location to exclude.
-     - parameter radius:    How many neighbouring locations should also be
-                            excluded
-     */
     func generate(excluding excluded: Location?, radius: UInt = 1) {
-        // Generate a random map by placing all the bombs first, filling the
-        // remaining positions with empty tiles, and shuffling randomly.
-
-        // Place all the bombs at the start.
         let size = width * height
         tiles = (0..<size).map {
             return Tile(content: UInt($0) < self.bombs ? .bomb : .empty)
         }
 
-        // Since the last tile is guaranteed to be empty, it can be excluded
-        // from the shuffle and then swapped with a given location to ensure
-        // that location is empty after the shuffle. We can extend this to the
-        // other neighbours, so long as there are sufficient empty tiles.
         var safeLocations = Array<Location>()
         if let location = excluded {
             safeLocations.append(location)

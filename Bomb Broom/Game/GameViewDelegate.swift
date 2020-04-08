@@ -11,6 +11,5 @@ import Foundation
 protocol GameViewDelegate {
     func tileAt(_ location: Location) -> Tile
     func bombsNear(_ location: Location) -> UInt
-
     func tilePressed(_ location: Location)
 }

@@ -44,13 +44,15 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
     }
 
     fileprivate func startNewGame(bombs: UInt) {
-        let screenRect = UIScreen.main.bounds;
-        
-        game = Game(width: Dimension(screenRect.size.width / GameTileView.tileSize) + 1,
-                    height: Dimension(screenRect.size.height / GameTileView.tileSize) - 1,
+        let game_width = Dimension(gameView.bounds.width / GameTileView.tileSize)
+		let game_height = Dimension(gameView.bounds.height / GameTileView.tileSize)
+		
+        game = Game(width: game_width,
+                    height: game_height,
                     bombs: bombs)
         game?.addObserver(self)
         gameView.game = game
+
 		gameOn = true;
 		updateTime();
 		timeSpent = 0;

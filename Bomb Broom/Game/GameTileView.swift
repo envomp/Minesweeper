@@ -36,8 +36,20 @@ class GameTileView: UIView {
         self.rows = rows
         self.columns = columns
 
-        super.init(frame: CGRect(x: 0.0, y: 0.0, width: CGFloat(columns) * GameTileView.tileSize, height: CGFloat(rows) * GameTileView.tileSize))
-
+        let board_width = CGFloat(columns) * GameTileView.tileSize
+        let board_height = CGFloat(rows) * GameTileView.tileSize
+        
+        var padding_left = (UIScreen.main.bounds.width - board_width) / 2
+        
+        if (UIDevice.current.orientation.isLandscape) {
+            padding_left = padding_left / 4
+        }
+        
+        super.init(frame: CGRect(x: padding_left,
+                                 y: 0,
+                                 width: board_width,
+                                 height: board_height))
+        
         self.isUserInteractionEnabled = true
     }
 
@@ -79,8 +91,8 @@ class GameTileView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        let ctx = UIGraphicsGetCurrentContext()
-
+        let ctx = UIGraphicsGetCurrentContext();
+        
         for y in 0..<rows {
             for x in 0..<columns {
                 let location = Location(x: x, y: y)
