@@ -44,12 +44,32 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
     }
 
     fileprivate func startNewGame(bombs: UInt) {
-        let game_width = Dimension(gameView.bounds.width / GameTileView.tileSize)
-		let game_height = Dimension(gameView.bounds.height / GameTileView.tileSize)
+		let screenSize = UIScreen.main.bounds
+		
+		var game_width = Dimension(screenSize.width / GameTileView.tileSize)
+		var game_height = Dimension((screenSize.height - self.topLayoutGuide.length) / GameTileView.tileSize)
+		var sub1 = 0
+		var sub2 = 0
+		
+		print(UIDevice.current.name)
+		if (UIDevice.current.name.hasPrefix("iPhone 11")) {
+			if (UIDevice.current.orientation.isLandscape) {
+				sub1 = Int(2 * GameTileView.tileSize)
+				game_height -= 1
+				sub2 = Int(GameTileView.tileSize)
+				game_width -= 2
+			} else {
+				game_height -= 2
+				sub2 = Int(2 * GameTileView.tileSize)
+			}
+			
+		}
 		
         game = Game(width: game_width,
                     height: game_height,
-                    bombs: bombs)
+                    bombs: bombs,
+					total_width: Dimension(screenSize.width - CGFloat(sub1)),
+					total_height: Dimension(screenSize.height - self.topLayoutGuide.length - CGFloat(sub2)))
         game?.addObserver(self)
         gameView.game = game
 

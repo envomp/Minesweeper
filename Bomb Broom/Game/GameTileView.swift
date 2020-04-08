@@ -19,6 +19,8 @@ class GameTileView: UIView {
 
     static let tileSize: CGFloat = 44.0
 
+    let total_width: Dimension
+    let total_height: Dimension
     var location: Location
     var rows: Dimension
     var columns: Dimension
@@ -29,22 +31,20 @@ class GameTileView: UIView {
     var pressingLocation: Location?
     var pressingInside = false
 
-    init(location: Location, rows: Dimension, columns: Dimension) {
+    init(location: Location, rows: Dimension, columns: Dimension, total_width: Dimension, total_height: Dimension) {
         precondition(rows > 0, "Rows must be non-zero")
         precondition(columns > 0, "Columns must be non-zero")
         self.location = location
         self.rows = rows
         self.columns = columns
-
+        self.total_width = total_width
+        self.total_height = total_height
+        
         let board_width = CGFloat(columns) * GameTileView.tileSize
         let board_height = CGFloat(rows) * GameTileView.tileSize
         
-        var padding_left = (UIScreen.main.bounds.width - board_width) / 2
-        
-        if (UIDevice.current.orientation.isLandscape) {
-            padding_left = padding_left / 4
-        }
-        
+        let padding_left = CGFloat(CGFloat(total_width) - board_width) / 2
+
         super.init(frame: CGRect(x: padding_left,
                                  y: 0,
                                  width: board_width,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B6D80BA243D8BA20015D22B /* StringToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D80B9243D8BA20015D22B /* StringToImage.swift */; };
 		EA3B27A01B6FBCB300CA035D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3B279F1B6FBCB300CA035D /* AppDelegate.swift */; };
 		EA3B27A21B6FBCB300CA035D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3B27A11B6FBCB300CA035D /* ViewController.swift */; };
 		EA3B27A51B6FBCB300CA035D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3B27A31B6FBCB300CA035D /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B6D80B9243D8BA20015D22B /* StringToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToImage.swift; sourceTree = "<group>"; };
 		EA3B279A1B6FBCB300CA035D /* HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3B279E1B6FBCB300CA035D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3B279F1B6FBCB300CA035D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				EA912EEF1B9CB0260037968E /* GameTileView.swift */,
 				EA912EF11B9CC0970037968E /* TileSet.swift */,
 				EA805F1B1B9E2BA400BF84DC /* GameViewDelegate.swift */,
+				0B6D80B9243D8BA20015D22B /* StringToImage.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				EA3B27A21B6FBCB300CA035D /* ViewController.swift in Sources */,
 				EA912EF21B9CC0970037968E /* TileSet.swift in Sources */,
 				EA3B27C11B6FBCE800CA035D /* Game.swift in Sources */,
+				0B6D80BA243D8BA20015D22B /* StringToImage.swift in Sources */,
 				EA3B27A01B6FBCB300CA035D /* AppDelegate.swift in Sources */,
 				EA3B27C31B6FC37400CA035D /* RandomNumberGenerator.swift in Sources */,
 				EA912EF01B9CB0260037968E /* GameTileView.swift in Sources */,

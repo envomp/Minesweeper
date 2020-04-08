@@ -10,8 +10,6 @@ import UIKit
 
 class GameView: UIScrollView, GameViewDelegate, GameObserver {
 
-    static let gridSize: CGFloat = 64.0
-
     var flagMode = false
     var tileViews = Array<GameTileView>()
     var gameViewDelegate: GameViewDelegate?
@@ -65,7 +63,7 @@ class GameView: UIScrollView, GameViewDelegate, GameObserver {
             return
         }
         
-        let tile = GameTileView(location: Location(x: 0, y: 0), rows: game.height, columns: game.width)
+        let tile = GameTileView(location: Location(x: 0, y: 0), rows: game.height, columns: game.width, total_width: game.total_width, total_height: game.total_height)
         tile.delegate = self
         tile.tileSet = tileSet
         tile.setNeedsDisplay()
@@ -112,6 +110,5 @@ class GameView: UIScrollView, GameViewDelegate, GameObserver {
     }
 
     func gameLost(_ game: Game) {
-
     }
 }

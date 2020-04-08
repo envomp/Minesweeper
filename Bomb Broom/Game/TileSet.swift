@@ -27,9 +27,9 @@ class DefaultTileSet: TileSet {
 
     func drawFlaggedTile(_ rect: CGRect, context: CGContext) {
         drawUnknownTile(rect, context: context)
-        context.setFillColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
-        context.fillEllipse(in: rect.insetBy(dx: 8.0, dy: 8.0))
-    }
+        let image = "🚩".image()
+        image?.draw(in: rect)
+        }
 
     func drawPressedTile(_ rect: CGRect, context: CGContext) {
         context.setFillColor(gray: 0.5, alpha: 1.0)
@@ -51,20 +51,22 @@ class DefaultTileSet: TileSet {
         let imageRect = CTLineGetImageBounds(line, context)
         context.textMatrix = CGAffineTransform(scaleX: 1.0, y: -1.0)
         context.textPosition = CGPoint(x: rect.origin.x + floor((rect.size.width - imageRect.size.width) / 2.0),
-                                       y: rect.origin.y + floor((rect.size.height - imageRect.size.height) / 2.0))
+                                       y: rect.origin.y + 10 + floor((rect.size.height - imageRect.size.height) / 2.0))
+        context.setFillColor(gray: 0.9, alpha: 1.0)
+        context.fill(rect)
         CTLineDraw(line, context)
         context.flush()
     }
 
     func drawExplodedTile(_ rect: CGRect, context: CGContext) {
         drawUnknownTile(rect, context: context)
-        context.setFillColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0)
-        context.fill(rect.insetBy(dx: 4.0, dy: 4.0))
+        let image = "💥".image()
+        image?.draw(in: rect)
     }
 
     func drawBombTile(_ rect: CGRect, context: CGContext) {
         drawUnknownTile(rect, context: context)
-        context.setFillColor(gray: 0.0, alpha: 1.0)
-        context.fill(rect.insetBy(dx: 4.0, dy: 4.0))
+        let image = "💣".image()
+        image?.draw(in: rect)
     }
 }

@@ -66,6 +66,8 @@ class Game {
         case lost
     }
 
+    let total_width: Dimension
+    let total_height: Dimension
     let width: Dimension
     let height: Dimension
     let bombs: UInt
@@ -74,9 +76,11 @@ class Game {
     private var tiles = Array<Tile>();
     private var observers = Array<GameObserver>()
 
-    init?(width: Dimension, height: Dimension, bombs: UInt) {
+    init?(width: Dimension, height: Dimension, bombs: UInt, total_width: Dimension, total_height: Dimension) {
         self.width = width
         self.height = height
+        self.total_width = total_width
+        self.total_height = total_height
         self.bombs = bombs
 
         if width <= 0 || height <= 0 || bombs >= UInt(width * height) {
@@ -150,6 +154,11 @@ class Game {
 
         // Don't process already revealed tiles
         if tile.status == .revealed {
+            return
+        }
+        
+        // Don't process flags
+        if tile.status == .flagged {
             return
         }
 
