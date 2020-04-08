@@ -54,7 +54,6 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
         gameView.game = game
 
 		gameOn = true;
-		updateTime();
 		timeSpent = 0;
     }
 
@@ -66,9 +65,11 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
 
         startNewGame(bombs: 20)
 		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+		updateTime();
 	}
 	
 	func updateTime() {
+
 		if (self.gameOn) {
 			self.timeSpent += 1;
 			timeSpentLabel.text = "T: " + String(self.timeSpent);
