@@ -17,7 +17,7 @@ protocol GameTileViewDelegate {
 
 class GameTileView: UIView {
 
-    static let tileSize: CGFloat = 44.0
+    var tileSize: CGFloat = 44.0;
 
     let total_width: Dimension
     let total_height: Dimension
@@ -31,17 +31,20 @@ class GameTileView: UIView {
     var pressingLocation: Location?
     var pressingInside = false
 
-    init(location: Location, rows: Dimension, columns: Dimension, total_width: Dimension, total_height: Dimension) {
+    
+    init(location: Location, rows: Dimension, columns: Dimension, total_width: Dimension, total_height: Dimension, tileSize: CGFloat) {
+        
         precondition(rows > 0, "Rows must be non-zero")
         precondition(columns > 0, "Columns must be non-zero")
+
         self.location = location
         self.rows = rows
         self.columns = columns
         self.total_width = total_width
         self.total_height = total_height
-        
-        let board_width = CGFloat(columns) * GameTileView.tileSize
-        let board_height = CGFloat(rows) * GameTileView.tileSize
+        self.tileSize = tileSize;
+        let board_width = CGFloat(columns) * tileSize
+        let board_height = CGFloat(rows) * tileSize
         
         let padding_left = CGFloat(CGFloat(total_width) - board_width) / 2
 
@@ -59,7 +62,6 @@ class GameTileView: UIView {
 
     func locationForPoint(_ point: CGPoint) -> Location? {
         let viewSize = bounds.size
-        let tileSize = GameTileView.tileSize
         switch (point.x, point.y) {
         case (0.0..<viewSize.width, 0.0..<viewSize.height):
             return Location(x: location.x + Dimension(floor(point.x / tileSize)),
@@ -72,7 +74,6 @@ class GameTileView: UIView {
     func rectForLocation(_ location: Location) -> CGRect? {
         switch (location.x, location.y) {
         case (self.location.x..<self.location.x + columns, self.location.y..<self.location.y + rows):
-            let tileSize = GameTileView.tileSize
             return CGRect(x: CGFloat(location.x) * tileSize,
                 y: CGFloat(location.y) * tileSize,
                 width: tileSize,
@@ -116,12 +117,12 @@ class GameTileView: UIView {
                     tileSet?.drawUnknownTile(rect, context: ctx)
                 }
             case .flagged:
-                tileSet?.drawFlaggedTile(rect, context: ctx)
+                tileSet?.drawFlaggedTile(rect, context: ctx, flagIcon: GameController.flagIcon)
             case .revealed:
                 let count = delegate?.bombsNear(location) ?? 0
                 tileSet?.drawRevealedTile(rect, context: ctx, count: count)
             case .exploded:
-                tileSet?.drawExplodedTile(rect, context: ctx)
+                tileSet?.drawExplodedTile(rect, context: ctx, explosionIcon: GameController.explosionIcon)
             }
         } else {
             ctx.setFillColor(gray: 0.75, alpha: 1.0)
