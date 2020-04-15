@@ -37,7 +37,7 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
         switch game.state {
         case .initialized: fallthrough
         case .running:
-            bombsLeftLabel.text = "B: \(game.bombs - game.flagCount)"
+            bombsLeftLabel.text = "Bombs: \(game.bombs - game.flagCount)"
         default:
             bombsLeftLabel.text = ""
         }
@@ -92,7 +92,7 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
 
 		if (self.gameOn) {
 			self.timeSpent += 1;
-			timeSpentLabel.text = "T: " + String(self.timeSpent);
+			timeSpentLabel.text = "Time: " + String(self.timeSpent);
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 				self.updateTime();
 			}
