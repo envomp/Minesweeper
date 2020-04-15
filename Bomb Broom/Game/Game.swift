@@ -71,17 +71,19 @@ class Game {
     let width: Dimension
     let height: Dimension
     let bombs: UInt
+    let tile_size: Int;
     var state: State = .initialized
 
     private var tiles = Array<Tile>();
     private var observers = Array<GameObserver>()
 
-    init?(width: Dimension, height: Dimension, bombs: UInt, total_width: Dimension, total_height: Dimension) {
+    init?(width: Dimension, height: Dimension, bombs: UInt, total_width: Dimension, total_height: Dimension, tile_size: Int) {
         self.width = width
         self.height = height
         self.total_width = total_width
         self.total_height = total_height
         self.bombs = bombs
+        self.tile_size = tile_size;
 
         if width <= 0 || height <= 0 || bombs >= UInt(width * height) {
             return nil

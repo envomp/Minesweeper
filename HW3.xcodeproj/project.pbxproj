@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0B6D80BA243D8BA20015D22B /* StringToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D80B9243D8BA20015D22B /* StringToImage.swift */; };
+		0B6D80C024467D590015D22B /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D80BF24467D590015D22B /* NavigationController.swift */; };
+		0B6D80C224467EFC0015D22B /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6D80C124467EFC0015D22B /* NavigationViewController.swift */; };
 		EA3B27A01B6FBCB300CA035D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3B279F1B6FBCB300CA035D /* AppDelegate.swift */; };
-		EA3B27A21B6FBCB300CA035D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3B27A11B6FBCB300CA035D /* ViewController.swift */; };
+		EA3B27A21B6FBCB300CA035D /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3B27A11B6FBCB300CA035D /* GameController.swift */; };
 		EA3B27A51B6FBCB300CA035D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3B27A31B6FBCB300CA035D /* Main.storyboard */; };
 		EA3B27A71B6FBCB300CA035D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA3B27A61B6FBCB300CA035D /* Images.xcassets */; };
 		EA3B27AA1B6FBCB300CA035D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA3B27A81B6FBCB300CA035D /* LaunchScreen.xib */; };
@@ -33,10 +35,12 @@
 
 /* Begin PBXFileReference section */
 		0B6D80B9243D8BA20015D22B /* StringToImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToImage.swift; sourceTree = "<group>"; };
-		EA3B279A1B6FBCB300CA035D /* HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B6D80BF24467D590015D22B /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		0B6D80C124467EFC0015D22B /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		EA3B279A1B6FBCB300CA035D /* HW4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3B279E1B6FBCB300CA035D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA3B279F1B6FBCB300CA035D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EA3B27A11B6FBCB300CA035D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		EA3B27A11B6FBCB300CA035D /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		EA3B27A41B6FBCB300CA035D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA3B27A61B6FBCB300CA035D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA3B27A91B6FBCB300CA035D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -78,7 +82,7 @@
 		EA3B279B1B6FBCB300CA035D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA3B279A1B6FBCB300CA035D /* HW3.app */,
+				EA3B279A1B6FBCB300CA035D /* HW4.app */,
 				EA3B27AF1B6FBCB300CA035D /* HW3Tests.xctest */,
 			);
 			name = Products;
@@ -89,7 +93,9 @@
 			children = (
 				EA3B27BF1B6FBCBD00CA035D /* Game */,
 				EA3B279F1B6FBCB300CA035D /* AppDelegate.swift */,
-				EA3B27A11B6FBCB300CA035D /* ViewController.swift */,
+				0B6D80C124467EFC0015D22B /* NavigationViewController.swift */,
+				0B6D80BF24467D590015D22B /* NavigationController.swift */,
+				EA3B27A11B6FBCB300CA035D /* GameController.swift */,
 				EA3B27A31B6FBCB300CA035D /* Main.storyboard */,
 				EA3B27A61B6FBCB300CA035D /* Images.xcassets */,
 				EA3B27A81B6FBCB300CA035D /* LaunchScreen.xib */,
@@ -137,7 +143,7 @@
 			);
 			name = HW3;
 			productName = "Bomb Broom";
-			productReference = EA3B279A1B6FBCB300CA035D /* HW3.app */;
+			productReference = EA3B279A1B6FBCB300CA035D /* HW4.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EA3B27AE1B6FBCB300CA035D /* HW3Tests */ = {
@@ -167,7 +173,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 1140;
-				ORGANIZATIONNAME = Tony;
+				ORGANIZATIONNAME = "Enrico Vompa";
 				TargetAttributes = {
 					EA3B27991B6FBCB300CA035D = {
 						CreatedOnToolsVersion = 6.4;
@@ -224,13 +230,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA3B27A21B6FBCB300CA035D /* ViewController.swift in Sources */,
+				EA3B27A21B6FBCB300CA035D /* GameController.swift in Sources */,
 				EA912EF21B9CC0970037968E /* TileSet.swift in Sources */,
+				0B6D80C224467EFC0015D22B /* NavigationViewController.swift in Sources */,
 				EA3B27C11B6FBCE800CA035D /* Game.swift in Sources */,
 				0B6D80BA243D8BA20015D22B /* StringToImage.swift in Sources */,
 				EA3B27A01B6FBCB300CA035D /* AppDelegate.swift in Sources */,
 				EA3B27C31B6FC37400CA035D /* RandomNumberGenerator.swift in Sources */,
 				EA912EF01B9CB0260037968E /* GameTileView.swift in Sources */,
+				0B6D80C024467D590015D22B /* NavigationController.swift in Sources */,
 				EA3B27C71B70385300CA035D /* GameView.swift in Sources */,
 				EA805F1C1B9E2BA400BF84DC /* GameViewDelegate.swift in Sources */,
 			);
@@ -320,7 +328,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -368,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -382,13 +390,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Bomb Broom/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.goold.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ee.taltech.envomp.HW4;
+				PRODUCT_NAME = HW4;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -397,13 +408,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Bomb Broom/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.goold.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = ee.taltech.envomp.HW4;
+				PRODUCT_NAME = HW4;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

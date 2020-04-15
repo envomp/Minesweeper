@@ -13,14 +13,24 @@ private enum FlagMode: Int {
     case enabled = 1
 }
 
-class ViewController: UIViewController, GameViewDelegate, GameObserver {
+class GameController: UIViewController, GameViewDelegate, GameObserver {
 
     @IBOutlet var gameView: GameView!
     @IBOutlet var bombsLeftLabel: UILabel!
 	@IBOutlet var timeSpentLabel: UILabel!
 	@IBOutlet var flagModeSelector: UISegmentedControl!
 	var gameOn = false;
-	var timeSpent = 0;
+	var timeSpent = 0.0;
+	
+	static var bombIcon = "💣";
+	static var explosionIcon = "💥";
+	static var flagIcon = "🚩";
+	
+	var tileSize: CGFloat = 44.0;
+	var amountOfBombs = 0.20;
+	var curWidth: CGFloat = 0.0;
+	var curHeight: CGFloat = 0.0;
+	
 
     var game: Game? {
         didSet {
@@ -37,39 +47,35 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
         switch game.state {
         case .initialized: fallthrough
         case .running:
-            bombsLeftLabel.text = "Bombs: \(game.bombs - game.flagCount)"
+            bombsLeftLabel.text = "B: \(game.bombs - game.flagCount)"
         default:
             bombsLeftLabel.text = ""
         }
     }
 
-    fileprivate func startNewGame(bombs: UInt) {
-		let screenSize = UIScreen.main.bounds
+    fileprivate func startNewGame(bombs: Double) {
 		
-		var game_width = Dimension(screenSize.width / GameTileView.tileSize)
-		var game_height = Dimension((screenSize.height - self.topLayoutGuide.length) / GameTileView.tileSize)
-		var sub1 = 0
-		var sub2 = 0
+		tileSize = max(min(tileSize, min(gameView.bounds.width, gameView.bounds.height) - 20), 1)
+		
+		curWidth = gameView.bounds.width;
+		curHeight = gameView.bounds.height;
+		
+		let game_width = Dimension(gameView.bounds.width / tileSize)
+		let game_height = Dimension((gameView.bounds.height) / tileSize)
 		
 		print(UIDevice.current.name)
-		if (UIDevice.current.name.hasPrefix("iPhone 11")) {
-			if (UIDevice.current.orientation.isLandscape) {
-				sub1 = Int(2 * GameTileView.tileSize)
-				game_height -= 1
-				sub2 = Int(GameTileView.tileSize)
-				game_width -= 2
-			} else {
-				game_height -= 2
-				sub2 = Int(2 * GameTileView.tileSize)
-			}
-			
-		}
+		print("Tile \(tileSize)")
+		print(gameView.bounds.width)
+		print(gameView.bounds.height)
+		
 		
         game = Game(width: game_width,
                     height: game_height,
-                    bombs: bombs,
-					total_width: Dimension(screenSize.width - CGFloat(sub1)),
-					total_height: Dimension(screenSize.height - self.topLayoutGuide.length - CGFloat(sub2)))
+					bombs: UInt(max(Int(bombs * Double(game_width) * Double(game_height)) - 1, 0)),
+					total_width: Dimension(gameView.bounds.width),
+					total_height: Dimension(gameView.bounds.height),
+					tile_size: Int(tileSize))
+		
         game?.addObserver(self)
         gameView.game = game
 
@@ -83,17 +89,20 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
         gameView.tileSet = DefaultTileSet()
         gameView.gameViewDelegate = self
 
-        startNewGame(bombs: 20)
-		NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
+        startNewGame(bombs: amountOfBombs)
+		NotificationCenter.default.addObserver(self, selector: #selector(GameController.rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
 		updateTime();
 	}
 	
 	func updateTime() {
-
-		if (self.gameOn) {
-			self.timeSpent += 1;
-			timeSpentLabel.text = "Time: " + String(self.timeSpent);
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+		
+		if (curHeight != gameView.bounds.height || curWidth != gameView.bounds.width) {
+			startNewGame(bombs: amountOfBombs);
+			updateTime()
+		} else if (self.gameOn) {
+			self.timeSpent += 0.01;
+			timeSpentLabel.text = "Time: " + String(round(self.timeSpent * 100) / 100);
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
 				self.updateTime();
 			}
 		}
@@ -104,25 +113,8 @@ class ViewController: UIViewController, GameViewDelegate, GameObserver {
 	}
 
 	@objc func rotated() {
-			if UIDevice.current.orientation.isLandscape {
-				startNewGame(bombs: 20)
-			} else {
-				startNewGame(bombs: 20)
-			}
-		}
-
-	@IBAction func L1Pressed(_ sender: Any) {
-		startNewGame(bombs: 10)
+		startNewGame(bombs: amountOfBombs)
 	}
-	
-    @IBAction func L2Pressed(_ sender: Any) {
-        startNewGame(bombs: 20)
-    }
-    
-    @IBAction func L3Pressed(_ sender: Any) {
-        startNewGame(bombs: 30)
-    }
-    
 
     @IBAction func flagModeChanged(_ sender: AnyObject?) {
         if flagModeSelector.selectedSegmentIndex == FlagMode.enabled.rawValue {

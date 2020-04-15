@@ -11,10 +11,13 @@ import CoreText
 protocol TileSet {
     func drawUnknownTile(_ rect: CGRect, context: CGContext)
     func drawFlaggedTile(_ rect: CGRect, context: CGContext)
+    func drawFlaggedTile(_ rect: CGRect, context: CGContext, flagIcon: String)
     func drawPressedTile(_ rect: CGRect, context: CGContext)
     func drawRevealedTile(_ rect: CGRect, context: CGContext, count: UInt)
     func drawExplodedTile(_ rect: CGRect, context: CGContext)
+    func drawExplodedTile(_ rect: CGRect, context: CGContext, explosionIcon: String)
     func drawBombTile(_ rect: CGRect, context: CGContext)
+    func drawBombTile(_ rect: CGRect, context: CGContext, bombIcon: String)
 }
 
 class DefaultTileSet: TileSet {
@@ -29,7 +32,13 @@ class DefaultTileSet: TileSet {
         drawUnknownTile(rect, context: context)
         let image = "🚩".image()
         image?.draw(in: rect)
-        }
+    }
+    
+    func drawFlaggedTile(_ rect: CGRect, context: CGContext, flagIcon: String) {
+        drawUnknownTile(rect, context: context)
+        let image = flagIcon.image()
+        image?.draw(in: rect)
+    }
 
     func drawPressedTile(_ rect: CGRect, context: CGContext) {
         context.setFillColor(gray: 0.5, alpha: 1.0)
@@ -64,9 +73,21 @@ class DefaultTileSet: TileSet {
         image?.draw(in: rect)
     }
 
+    func drawExplodedTile(_ rect: CGRect, context: CGContext, explosionIcon: String) {
+        drawUnknownTile(rect, context: context)
+        let image = explosionIcon.image()
+        image?.draw(in: rect)
+    }
+    
     func drawBombTile(_ rect: CGRect, context: CGContext) {
         drawUnknownTile(rect, context: context)
         let image = "💣".image()
+        image?.draw(in: rect)
+    }
+    
+    func drawBombTile(_ rect: CGRect, context: CGContext, bombIcon: String) {
+        drawUnknownTile(rect, context: context)
+        let image = bombIcon.image()
         image?.draw(in: rect)
     }
 }

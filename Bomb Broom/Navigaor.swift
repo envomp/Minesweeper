@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Navigaor: UIView {
+class Navigaor: UIViewController {
 
     /*
     // Only override draw() if you perform custom drawing.

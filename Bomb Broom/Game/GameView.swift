@@ -9,7 +9,7 @@
 import UIKit
 
 class GameView: UIScrollView, GameViewDelegate, GameObserver {
-
+    
     var flagMode = false
     var tileViews = Array<GameTileView>()
     var gameViewDelegate: GameViewDelegate?
@@ -17,16 +17,16 @@ class GameView: UIScrollView, GameViewDelegate, GameObserver {
     var game: Game? {
         didSet {
             
-            let tileSize = GameTileView.tileSize
             if let game = game {
-                contentSize = CGSize(width: tileSize * CGFloat(game.width),
-                    height: tileSize * CGFloat(game.height))
+                contentSize = CGSize(width: CGFloat(game.tile_size) * CGFloat(game.width),
+                                     height: CGFloat(game.tile_size) * CGFloat(game.height))
             } else {
                 contentSize = bounds.size
             }
             for view in tileViews {
                 view.removeFromSuperview()
             }
+            
             tileViews.removeAll(keepingCapacity: true)
             setNeedsLayout()
         }
@@ -63,7 +63,13 @@ class GameView: UIScrollView, GameViewDelegate, GameObserver {
             return
         }
         
-        let tile = GameTileView(location: Location(x: 0, y: 0), rows: game.height, columns: game.width, total_width: game.total_width, total_height: game.total_height)
+        let tile = GameTileView(location: Location(x: 0, y: 0),
+                                rows: game.height,
+                                columns: game.width,
+                                total_width: game.total_width,
+                                total_height: game.total_height,
+                                tileSize: CGFloat(game.tile_size))
+        
         tile.delegate = self
         tile.tileSet = tileSet
         tile.setNeedsDisplay()
